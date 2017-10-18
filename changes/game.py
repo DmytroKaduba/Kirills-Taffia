@@ -89,12 +89,12 @@ def update_hp_bar():
 	player_vitals = player.stats['health']
 	player_health_perc = player_vitals['curh']/player_vitals['maxh']
 
-	count_hash = player_vitals['curh']
+	count_hash = player_health_perc * 10
 
 
 	hashes = ''
 	for i in range(0,int(count_hash)):
-		hashes += '♥'
+		hashes += ' ♥'
 
 	update_txt += hashes
 
@@ -173,7 +173,7 @@ console = Entry(main, bg = '#6a8c87', fg = 'black', width = 88)
 map_label = Label(main,  image = map_sprite)
 inv_txt = Text(main, bg = '#262820',fg = 'white', width = 25, height = 15)
 stats_txt = Text(main, bg = '#262820', fg = 'green', width = 25, height = 15)
-hp_entry = Text(stats_txt, bg = 'black', fg = 'red', font=("Helvetica", 15))
+hp_entry = Text(stats_txt, bg = 'black', fg = 'red', font=("Helvetica", 13))
 out_console = Text(main, bg = 'black', fg = 'yellow', width = 100)
 choice_console = Text(main, bg = 'black', fg = 'yellow', width = 100, height = 10)
 
