@@ -89,16 +89,23 @@ def update_hp_bar():
 	player_vitals = player.stats['health']
 	player_health_perc = player_vitals['curh']/player_vitals['maxh']
 
-	count_hash = player_health_perc * 10
-
+	count_hash = player_health_perc * 8
+	count_dash = 8 - count_hash
 
 	hashes = ''
 	for i in range(0,int(count_hash)):
-		hashes += ' ♥'
+		hashes += ' ♥ '
 
-	update_txt += hashes
+	dashes = ''
+	for i in range(0,int(count_dash)):
+		dashes += ' ♡ '
+
+	update_txt += hashes + dashes
 
 	update_text(hp_entry, update_txt)
+
+
+
 
 
 #displays the main menu of the game
@@ -121,8 +128,8 @@ def main_menu():
 	user_input = ""
 
 	if normalised_input == 'a':
-		new_game()
-		current_stage = new_game
+		select_stats()
+		current_stage = select_stats
 		#Start game
 	elif normalised_input== 'b':
 		load_game()
@@ -160,17 +167,17 @@ main = Tk ()
 main.resizable(width = False, height = False)
 main.title('Taffi Warz')
 
-bg_image = PhotoImage(file = "bg3.png")
-map_sprite = PhotoImage(file = "map.png")
+#bg_image = PhotoImage(file = "bg3.png")
+#map_sprite = PhotoImage(file = "map.png")
 
 #window background
-frame = Label(main, image = bg_image)
-frame.place(x=0, y=0, relwidth=1, relheight=1)
+#frame = Label(main, image = bg_image)
+#frame.place(x=0, y=0, relwidth=1, relheight=1)
 
 
 #creating each widget
 console = Entry(main, bg = '#6a8c87', fg = 'black', width = 88)
-map_label = Label(main,  image = map_sprite)
+#map_label = Label(main,  image = map_sprite)
 inv_txt = Text(main, bg = '#262820',fg = 'white', width = 25, height = 15)
 stats_txt = Text(main, bg = '#262820', fg = 'green', width = 25, height = 15)
 hp_entry = Text(stats_txt, bg = 'black', fg = 'red', font=("Helvetica", 13))
@@ -179,7 +186,7 @@ choice_console = Text(main, bg = 'black', fg = 'yellow', width = 100, height = 1
 
 #Display and layout of all widgets
 console.grid(row = 4, column = 1, columnspan = 3)
-map_label.grid(row = 1, column = 1)
+#map_label.grid(row = 1, column = 1)
 inv_txt.grid(row = 1, column = 3, rowspan = 2)
 stats_txt.grid(row = 2, column = 1)
 hp_entry.place(x=0, y=0, relwidth =1, relheight = 0.1)
